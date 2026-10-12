@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add to bag · UI animations</title>
+  <meta name="description" content="Pick a size, tap Add to bag, and the product flies in an arc into the bag, which bumps its counter. Plain HTML, CSS and JavaScript.">
+  <meta name="theme-color" content="#fff9fa">
+  <link rel="preload" href="assets/fonts/rubik-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="reel/theme.css">
+  <link rel="stylesheet" href="reel/reel.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="demo-page">
+    <section class="shop" aria-label="Product">
+      <header class="shop-bar">
+        <span class="shop-name">Pacer Lab</span>
+        <button class="bag" type="button" aria-label="Bag, 0 items">
+          <svg class="bag-icon bag-closed" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,36H40A20,20,0,0,0,20,56V200a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V56A20,20,0,0,0,216,36Zm-4,160H44V60H212ZM76,88a12,12,0,0,1,24,0,28,28,0,0,0,56,0,12,12,0,0,1,24,0A52,52,0,0,1,76,88Z"/></svg>
+          <svg class="bag-icon bag-open" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,36H40A20,20,0,0,0,20,56V200a20,20,0,0,0,20,20H216a20,20,0,0,0,20-20V56A20,20,0,0,0,216,36Zm-4,24V76H44V60ZM44,196V100H212v96Zm136-72a52,52,0,0,1-104,0,12,12,0,0,1,24,0,28,28,0,0,0,56,0,12,12,0,0,1,24,0Z"/></svg>
+          <span class="badge" aria-hidden="true"><span class="badge-num">0</span></span>
+        </button>
+      </header>
+
+      <article class="card">
+        <figure class="photo">
+          <img src="assets/sneaker.jpg" alt="Loop Runner sneaker in hot pink and cream" width="800" height="800">
+        </figure>
+
+        <div class="info">
+          <h1 class="name">Loop Runner</h1>
+          <p class="price">$128</p>
+        </div>
+
+        <fieldset class="sizes">
+          <legend>Size (EU)</legend>
+          <div class="size-row">
+            <label><input type="radio" name="size" value="39"><span>39</span></label>
+            <label><input type="radio" name="size" value="40"><span>40</span></label>
+            <label><input type="radio" name="size" value="41"><span>41</span></label>
+            <label><input type="radio" name="size" value="42"><span>42</span></label>
+            <label><input type="radio" name="size" value="43"><span>43</span></label>
+          </div>
+          <p class="size-hint" id="size-hint">
+            <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm-12-80V80a12,12,0,0,1,24,0v52a12,12,0,0,1-24,0Zm28,40a16,16,0,1,1-16-16A16,16,0,0,1,144,172Z"/></svg>
+            Pick your size first
+          </p>
+        </fieldset>
+
+        <button class="add" type="button" aria-describedby="size-hint">
+          <span class="add-label add-idle">
+            <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"/></svg>
+            Add to bag
+          </span>
+          <span class="add-label add-done" aria-hidden="true">
+            <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></svg>
+            <span class="done-text">Added</span>
+          </span>
+        </button>
+      </article>
+
+      <p class="visually-hidden" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <nav class="toolbar" aria-label="Demo links">
+    <a href="https://www.instagram.com/arslanagayev.dev/">More animations</a>
+    <a href="?reel">Reel mode</a>
+    <a href="https://github.com/arslanagayev/add-to-cart-animation">Source</a>
+  </nav>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
