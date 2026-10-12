@@ -13,7 +13,9 @@ body.reel .toolbar { display: none; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 110px 64px 56px;
+  /* Safe zone for Reels and TikTok: nothing important in the top 250px, the bottom 450px
+     (username, caption, audio) or the right 140px (like, comment, share). */
+  padding: 262px 140px 452px 64px;
   background: var(--bg);
 }
 
@@ -31,7 +33,7 @@ body.reel .toolbar { display: none; }
   box-shadow: 4px 4px 0 var(--shadow);
 }
 
-.reel-title h1 { margin: 0; font: 800 160px/0.92 var(--font); letter-spacing: -0.05em; color: var(--text); }
+.reel-title h1 { margin: 0; font: 800 132px/0.92 var(--font); letter-spacing: -0.05em; color: var(--text); }
 .reel-title h1 span { color: var(--pink); }
 
 .reel-demo {
