@@ -10,6 +10,7 @@ export const isAutoplay = isReel || params.has('autoplay');
 const STAGE = params.get('ratio') === '4x5' ? { w: 1080, h: 1350 } : { w: 1080, h: 1920 };
 const showCode = !params.has('nocode');
 const firstDelay = Number(params.get('delay') ?? 900);
+const MIN_DEMO_SCALE = 1.2; // below this the demo reads too small on a phone
 
 const HANDLE = '@arslanagayev.dev';
 const AVATAR = new URL('./avatar.png', import.meta.url).href;
@@ -133,11 +134,19 @@ export function mountReel({ eyebrow, title, accent, demo, file, code, play, rese
     stage.style.transform = `translate(-50%, -50%) scale(${s})`;
     cursor.setScale(s);
     // Scale the demo to fill the space between the title and the code window.
-    const fitScale = Math.min(
+    const scaleFor = () => Math.min(
       demoScale ?? 1.6,
       (area.clientWidth * 0.9) / demo.offsetWidth,
       (area.clientHeight * 0.94) / demo.offsetHeight,
     );
+    let fitScale = scaleFor();
+    // A tall demo inside the safe zone leaves no room for the code: drop the code window
+    // rather than shrink the demo (the code still goes in the carousel and the README).
+    const codeBox = stage.querySelector('.reel-code');
+    if (codeBox && fitScale < MIN_DEMO_SCALE) {
+      codeBox.remove();
+      fitScale = scaleFor();
+    }
     stage.style.setProperty('--demo-scale', fitScale.toFixed(3));
   };
   fit();
